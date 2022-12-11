@@ -1,0 +1,105 @@
+import java.util.Scanner
+abstract class Contato{
+    private String nome;
+    private String email;
+    private String telefone;
+  
+    public String getNome() {
+      return nome;
+    }
+  
+    public void setNome(String nome) {
+      this.nome = nome;
+    }
+  
+    public String getEmail() {
+      return email;
+    }
+  
+    public void setEmail(String email) {
+      this.email = email;
+    }
+  
+    public String getTelefone() {
+      return telefone;
+    }
+  
+    public void setTelefone(String telefone) {
+      this.telefone = telefone;
+    }
+  }
+  
+ class Cliente extends Contato{
+    
+  }
+  
+ class Fornecedor extends Contato{
+  
+  }
+class ListaC {
+   public void printCliente (Cliente cliente){
+     System.out.println(cliente.getNome());
+     System.out.println(cliente.getEmail());
+     System.out.println(cliente.getTelefone());
+   }
+}
+class ListaF {
+    public void printFornecedor (Fornecedor fornecedor){
+        System.out.println(fornecedor.getNome());
+        System.out.println(fornecedor.getEmail());
+        System.out.println(fornecedor.getTelefone());
+    }
+}
+public class Sistema2{
+  public static void main (String[] args){
+      Scanner entrada = new Scanner(System.in);
+    System.out.println("Menu:\n\nInsira a opção desejada:\n[1] - Cadastrar Cliente\n[2] - Remover Cliente\n[3] - Cadastrar Fornecedor\n[4] - Remover Fornecedor\n[5] - Realizar Venda\n[6] - Gerar Relatório\n\nOpção escolhida:");
+    int menu = entrada.nextInt();
+    switch(menu){
+      case 1:
+        //função de cadastrar cliente
+class Main {
+  public static void main(String[] args) {
+    Cliente cliente = new Cliente();
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Nome do cliente:");
+    cliente.setNome(scanner.nextLine());
+    System.out.println("E-mail do Cliente");
+    cliente.setEmail(scanner.nextLine());
+    System.out.println("Telefone do Cliente:");
+    cliente.setTelefone(scanner.nextLine());
+  }
+}
+        break;
+      case 2:
+        //função de remover cliente
+        break;
+      case 3:
+        //função de cadastrar fornecedor
+        class Main {
+  public static void main(String[] args) {
+    Fornecedor fornecedor = new Fornecedor();
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Nome do fornecedor:");
+    cliente.setNome(scanner.nextLine());
+    System.out.println("E-mail do fornecedor");
+    cliente.setEmail(scanner.nextLine());
+    System.out.println("Telefone do fornecedor:");
+    cliente.setTelefone(scanner.nextLine());
+  }
+}
+        break;
+      case 4:
+        //função de remover fornecedor
+        break;
+      case 5:
+        //função de realizar venda
+        break;
+      case 6:
+        //função de gerar relatório
+        break;
+      default:
+        System.out.println("Opção inválida. Digite um número de 1 a 6.");
+        break;
+  }
+}
