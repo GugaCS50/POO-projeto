@@ -1,0 +1,268 @@
+UFRR – DCC 
+Programação orientada a objetos
+Alunos: Luiz Gustavo Dall’Agnol Cavalcante, José Victor Rocha de Alencar, Guilherme Miranda de Araújo e Mateus Moraes de Moura.
+
+
+Documentação Projeto Final
+
+Escolhido o tema de Controle de vendas de um microempreendedor, nosso código consistiu em 3 sistemas principais, desenvolvidos independentemente e então unidos.
+1-	Sistema de controle do inventário, que registra vendas e compras
+2-	Sistema de contatos, que mantém lista de clientes e fornecedores 
+3-	Sistema de geração de relatório, que mostra a receita desde o último relatório, quantidade de produtos vendidos e receita por produto. 
+Primeiro estabelecemos as classes que iremos utilizar, contatos, clientes, fornecedores, produto e preço (tanto cliente quanto fornecedor extendem de contato). 
+Então estabelecemos o Main, dentro dele declaramos nossas ArrayLists, Strings, Ints e Doubles. Então estabelecemos o menu, utilizando switch case, damos ao usuário 11 opções e perguntamos qual ele escolhe, cadastrar cliente, remover cliente, cadastrar fornecedor, remover fornecedor, adicionar produto ao inventário, realizar venda, mostrar clientes, mostrar fornecedores, mostrar inventário, gerar relatório e sair do programa.
+
+
+
+
+
+
+
+
+Código final:
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Locale;
+
+abstract class Contato{
+    private String nome;
+    private String email;
+    private String telefone;
+  
+    public String getNome() {
+      return nome;
+    }
+  
+    public void setNome(String nome) {
+      this.nome = nome;
+    }
+  
+    public String getEmail() {
+      return email;
+    }
+  
+    public void setEmail(String email) {
+      this.email = email;
+    }
+  
+    public String getTelefone() {
+      return telefone;
+    }
+  
+    public void setTelefone(String telefone) {
+      this.telefone = telefone;
+    }
+  }
+  
+ class Cliente extends Contato{
+    
+  }
+  
+ class Fornecedor extends Contato{
+  
+  }
+
+class Produto {
+    private String nome;
+    private double preco;
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
+     * @return the preco
+     */
+    public double getPreco() {
+        return preco;
+    }
+
+    /**
+     * @param preco the preco to set
+     */
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+}
+
+  
+ public class ProjetoPoo{
+       public static void main (String args[]){
+      Scanner entrada = new Scanner(System.in).useLocale(Locale.US);
+      ArrayList<Cliente> clienteList = new ArrayList();
+      ArrayList<Fornecedor> fornecedorList = new ArrayList();
+      ArrayList<Produto> produtoList = new ArrayList();
+      String nome;
+      String email;
+      String telefone;
+      String produto;
+      double preco;
+      int i;
+      int a;
+      double receita=0;
+      int vendas=0;
+      int menu;
+      
+      do{System.out.println("Menu:\n\nInsira a opção desejada:\n[1] - Cadastrar Cliente\n[2] - Remover Cliente\n[3] - Cadastrar Fornecedor\n[4] - Remover Fornecedor\n[5] - Adicionar produto ao inventário\n[6] - Realizar venda\n[7] - Mostrar clientes\n[8] - Mostrar fornecedores\n[9] - Mostrar inventário\n[10] - Gerar Relatório\n[11] - Sair\n\nOpção escolhida:");
+    menu = entrada.nextInt();
+    switch(menu){
+      case 1:
+        //função de cadastrar cliente
+         
+         Cliente c1 = new Cliente();
+         
+        System.out.println("Nome do cliente:");
+        nome = entrada.next();
+        c1.setNome(nome);
+        System.out.println("E-mail do Cliente");
+        email = entrada.next();
+        c1.setEmail(email);
+        System.out.println("Telefone do Cliente:");
+        telefone = entrada.next();
+        c1.setTelefone(telefone);
+        
+        clienteList.add(c1);
+         
+         
+          
+        break;
+      case 2:
+        //função de remover cliente
+        for (i=0; i < clienteList.size(); i++){
+             System.out.println("Nome: " + clienteList.get(i).getNome());
+             System.out.println("Email: " + clienteList.get(i).getEmail());
+             System.out.println("Telefone: " + clienteList.get(i).getTelefone());
+             System.out.println("ID: " + i);
+        }
+             System.out.println("Digite a ID do contato que deseja remover:\n");
+             a= entrada.nextInt();
+             clienteList.remove(a);
+            
+
+        break;
+      case 3:
+         // função de cadastrar fornecedores
+         Fornecedor f1 = new Fornecedor();
+         
+        System.out.println("Nome do fornecedor:");
+        nome = entrada.next();
+        f1.setNome(nome);
+        System.out.println("E-mail do fornecedor:");
+        email = entrada.next();
+        f1.setEmail(email);
+        System.out.println("Telefone do fornecedor:");
+        telefone = entrada.next();
+        f1.setTelefone(telefone);
+        
+        fornecedorList.add(f1);
+         
+         
+
+        break;
+      case 4:
+        //função de remover fornecedor
+        for (i=0; i < fornecedorList.size(); i++){
+             System.out.println("Nome: " + fornecedorList.get(i).getNome());
+             System.out.println("Email: " + fornecedorList.get(i).getEmail());
+             System.out.println("Telefone: " + fornecedorList.get(i).getTelefone());
+             System.out.println("ID: " + i);
+        }
+             System.out.println("Digite a ID do contato que deseja remover:\n");
+             a= entrada.nextInt();
+             fornecedorList.remove(a);
+            
+
+        break;
+      case 5:
+        //função de adicionar ao inventário
+          Produto p1 = new Produto();
+         
+        System.out.println("Nome do produto:");
+        produto = entrada.next();
+        p1.setNome(produto);
+        entrada.nextLine();
+        System.out.println("Preço de venda:");
+        preco = entrada.nextDouble();
+        p1.setPreco(preco);
+        
+        
+        produtoList.add(p1);
+         
+         
+         
+
+        break;
+      case 6:
+        //função realizar venda
+          for (i=0; i < produtoList.size(); i++){
+             System.out.println("Nome: " + produtoList.get(i).getNome());
+             System.out.println("Preço de venda:" + produtoList.get(i).getPreco()+" R$");
+             System.out.println("ID: " + i);
+        }
+             System.out.println("Digite a ID do produto que será vendido:\n");
+             a= entrada.nextInt();
+             receita = receita+produtoList.get(a).getPreco();
+             vendas = vendas + 1;
+             produtoList.remove(a);
+            
+
+        break;
+      case 7:
+        //função mostrar clientes
+          for (i=0; i < clienteList.size(); i++){
+             System.out.println("Nome: " + clienteList.get(i).getNome());
+             System.out.println("Email " + clienteList.get(i).getEmail());
+             System.out.println("Telefone " + clienteList.get(i).getTelefone());
+             System.out.println("\n");
+         }
+        break;
+      case 8:
+        //mostrar fornecedores
+          for (i=0; i < fornecedorList.size(); i++){
+             System.out.println("Nome: " + fornecedorList.get(i).getNome());
+             System.out.println("Email " + fornecedorList.get(i).getEmail());
+             System.out.println("Telefone " + fornecedorList.get(i).getTelefone());
+             System.out.println("\n");
+         }
+           
+        break;
+      case 9:
+        // mostrar inventário
+          for (i=0; i < produtoList.size(); i++){
+             System.out.println("Nome: " + produtoList.get(i).getNome());
+             System.out.println("Preço de venda:" + produtoList.get(i).getPreco()+" R$");
+             System.out.println("\n");
+         }
+          break;
+      case 10:
+        // gerar relatório de vendas
+          System.out.println("----RELATÓRIO DE VENDAS----");
+          System.out.println("Receita desde o último relatório: "+receita+" R$");
+          System.out.println("Quantidade de produtos vendidos: "+vendas);
+          System.out.println("Receita por produtos vendidos: "+(receita/vendas));
+          System.out.println("----FIM DO RELATÓRIO----");
+          receita = 0;
+          vendas = 0;
+          break;
+      case 11:
+        // sair
+          break;
+      default:
+        System.out.println("Opção inválida. Digite um número de 1 a 11.");
+        break;
+    }
+      }while(menu!=11);
+   }
+
+  }
